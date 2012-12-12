@@ -1,1 +1,1 @@
-worker: node standup-irc.js
+worker: node app.js

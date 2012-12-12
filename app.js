@@ -2,7 +2,8 @@ var _ = require('underscore');
 var fs = require('fs');
 var irc = require('irc');
 var path = require('path');
-var pg = require('pg');
+var os = require('os');
+//var pg = require('pg');
 var winston = require('winston');
 
 var api = require('./api');
@@ -217,6 +218,28 @@ var commands = {
                 'Tasty!'
             ];
             irc_client.say(channel, _.shuffle(replies)[0]);
+        }
+    },
+
+    /* Leave the channel */
+    'bye': {
+        help: "Ask the bot to leave the channel.",
+        func: function(user, channel) {
+            irc_client.say(channel, 'Bye!');
+            irc_client.part(channel);
+
+            // Remove the channel from the db
+            if (pg_client) {
+                pg_client.query("DELETE FROM channels WHERE id=$1", [channel]);
+            }
+        }
+    },
+
+    /* Where are you? */
+    'hostname': {
+        help: "Ask the bot where it is.",
+        func: function(user, channel) {
+            irc_client.say(channel, "I'm running on " + os.hostname());
         }
     },
 

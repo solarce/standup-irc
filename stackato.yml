@@ -1,0 +1,10 @@
+name: standup-irc
+mem: 64M
+framework:
+    type: standalone
+    runtime: node
+hooks:
+    post-staging:
+    - npm install .
+
+command: node app.js
