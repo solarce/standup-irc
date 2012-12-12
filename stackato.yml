@@ -1,10 +1,7 @@
 name: standup-irc
 mem: 64M
 framework:
-    type: standalone
-    runtime: node
-hooks:
-    post-staging:
-    - npm install .
-
-command: node app.js
+  type: buildpack
+  framework: node
+env:
+  BUILDPACK_URL: git://github.com/solarce/heroku-buildpack-nodejs.git
