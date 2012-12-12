@@ -1,7 +1,7 @@
-name: standup-irc
+name: standup-irc-solarce
 mem: 64M
 framework:
   type: buildpack
-  framework: node
+
 env:
-  BUILDPACK_URL: git://github.com/solarce/heroku-buildpack-nodejs.git
+  BUILDPACK_URL: git://github.com/ttilley/stackato-buildpack-nodejs.git
