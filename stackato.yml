@@ -1,4 +1,4 @@
-name: standup-irc
+name: standup-irc-solarce
 mem: 64M
 framework:
   type: buildpack
